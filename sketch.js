@@ -5,7 +5,8 @@ var notes = ['C','D','E','F','G','A','B'];
 var treb = ['C4','D4','E4','F4','G4','A4','B4','C5','D5','E5','F5','G5','A5','B5','C6'];
 //var notes = ['D','E','F','G','A','B','C','D','E','F','G'];
 var textOff = 50;
-
+let slider;
+let inputSoftware;
 function setup() { 
   createCanvas(400, 400);
 	WebMidi.enable(function (err) { //check if WebMidi.js is enabled
@@ -27,11 +28,17 @@ function setup() {
     });
   });
   resetNote()
+  slider = createSlider(0, WebMidi.inputs.length, 1);
+  slider.input(updateMIDI);
 }
+
+
 var time = 0;
 var timeOffset = 0;
 var bestTime = 0;
 function draw() { 
+  //console.log(WebMidi.inputs.length);
+  //let val = slider.value();
   background(51);
   fill(250);
   textAlign(CENTER);
@@ -70,10 +77,24 @@ function draw() {
 
   //console.log(millis()/1000)
   time = millis()/1000 - timeOffset
-  console.log(timeOffset)
-  
+  console.log(timeOffset);
 }
 
+function updateMIDI(){
+  console.log(slider.value())
+  inputSoftware = WebMidi.inputs[slider.value()];
+    inputSoftware.addListener('noteon', "all",function (e) {
+      note = (e.note.name + e.note.octave);
+      // if(e.note.name=="D"){
+      //   console.log("A D note has been received, any octave");
+      // }
+      // if((e.note.name + e.note.octave)=="C4"){
+      //   console.log("A C4 note has been received, specifically");
+      // }
+    });
+    console.log("HAHAHAHHA");
+
+}
 
 
 function resetNote(){
