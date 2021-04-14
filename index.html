@@ -1,13 +1,299 @@
-<!DOCTYPE html><html><head>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="webmidi"></script>
-		<link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <script src="sketch.js"></script>
-  
+<!DOCTYPE html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+        }
+        input[type=button]{
+            width: 100;
+            height: 100%;
+            background-color: white;
+            border: 0ch;
+        }
 
-</body></html>
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+    <span>
+        <span style="float: left; border-right: 5px solid #000000;">
+            <h1>Command Palette</h1>
+            <table>
+                <tr>
+                    <td>var</td>
+                    <td>int</td>
+                    <td>str</td>
+                    <td>bool</td>
+                    <td>true</td>
+                    <td>fals</td>
+                    <td>ptyp</td>
+                    <td>praw</td>
+                    <td>add</td>
+                    <td>sub</td>
+                    <td>eq</td>
+                    <td>not</td>
+                    <td>if</td>
+                    <td>inc</td>
+                    <td>dec</td>
+                    <td>for</td>
+                    <td>clear</td>
+                </tr>
+                <tr>
+                    <td id=" #D6CF0A " style="background-color: #D6CF0A;" onclick="update_master_color('#D6CF0A')"></td>
+                    <td id=" #ff0000 " style="background-color: #ff0000;" onclick="update_master_color('#ff0000')"></td>
+                    <td id=" #ca00f2 " style="background-color: #ca00f2;" onclick="update_master_color('#ca00f2')"></td>
+                    <td id=" #ed6b1a " style="background-color: #ed6b1a;" onclick="update_master_color('#ed6b1a')"></td>
+                    <td id=" #32a852 " style="background-color: #32a852;" onclick="update_master_color('#32a852')"></td>
+                    <td id=" #d93daf " style="background-color: #d93daf;" onclick="update_master_color('#d93daf')"></td>
+                    <td id=" #FFB84B " style="background-color: #FFB84B;" onclick="update_master_color('#FFB84B')"></td>
+                    <td id=" #9e8520 " style="background-color: #9e8520;" onclick="update_master_color('#9e8520')"></td>
+                    <td id=" #9D3756 " style="background-color: #9D3756;" onclick="update_master_color('#9D3756')"></td>
+                    <td id=" #3243fc " style="background-color: #3243fc;" onclick="update_master_color('#3243fc')"></td>
+                    <td id=" #5ef290 " style="background-color: #5ef290;" onclick="update_master_color('#5ef290')"></td>
+                    <td id=" #6b1810 " style="background-color: #6b1810;" onclick="update_master_color('#6b1810')"></td>
+                    <td id=" #e063bd " style="background-color: #e063bd;" onclick="update_master_color('#e063bd')"></td>
+                    <td id=" #a66d7f " style="background-color: #a66d7f;" onclick="update_master_color('#a66d7f')"></td>
+                    <td id=" #7a86ff " style="background-color: #7a86ff;" onclick="update_master_color('#7a86ff')"></td>
+                    <td id=" #1d7499 " style="background-color: #1d7499;" onclick="update_master_color('#1d7499')"></td>
+                    <td id=" #ffffff " style="background-color: #ffffff;" onclick="update_master_color('#ffffff')"></td>
+                </tr>
+            </table>
+
+            <h1>Regsiter Palette</h1>
+            <table id="r_tab">
+                <tr>
+                    <td onclick="update_master_color_reg('R1-name')">
+                        <h1>R1</h1>
+                        <input type="color" id='R1-name' value="#808080">
+                        <input type="color" id='R1-type' value="#ffffff">
+                        <input type="color" id='R1-value' value="#ffffff">
+
+                    </td>
+                </tr>
+            </table>
+            <button onclick="add_reg()">Add Regsiter</button>
+            <div style="height: 50pt;"></div>
+            <div>
+                <button onclick="add_col()">Add Column</button>
+                <button onclick="add_row()">+Add Row</button>
+            </div>
+            <h1>Canvas</h1>
+            <table id="canvas">
+                <tr>
+                    <td id="button_1"></td>
+                    <td id="button_2"></td>
+                    <td id="button_3"></td>
+                    <td id="button_4"></td>
+                    <td id="button_5"></td>
+                    <!-- onclick="update_color('button_5')" -->
+
+                </tr>
+            </table>
+
+        </span>
+        <div style="float: right;">
+            <h1>Tools</h1>
+            <h2>Enter an integer:</h2>
+            <input type="number" id="num_to_hex" value="0" onchange="update_num_as_hex()">
+            <h2 id='num_as_hex' onclick="update_color_in('num_as_hex')"></h2>
+            <h1>HERE IS THE COMPILED CODE<br>CLICK TO COPY</h1>
+            <p id="comp_code" onclick="copy_code()"></p>
+        </div>
+      </span>
+      <script>
+
+            var current_color = "#ffffff";
+            var num_rows = 1;
+            var num_cols = 5;
+            var num_registers = 1;
+            var comp_code = "";
+
+
+            function add_reg(){
+                num_registers++
+
+                var regsiter_table = document.getElementById("r_tab")
+                var row = regsiter_table.rows[0]
+                var cell = row.insertCell(-1)
+                var prev_cell = row.cells[0]
+                cell.innerHTML = prev_cell.innerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                cell.outerHTML = prev_cell.outerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+
+                //new RegExp("[0-9]")/g
+
+
+            }
+
+
+            function renumber_table(){
+                var canvas = document.getElementById("canvas")
+                var c = 1
+                for(var i=0;i<canvas.rows.length;i++){
+                    for(var j=0;j<canvas.rows[i].cells.length;j++){
+                        var cell = canvas.rows[i].cells[j]
+                        cell.id = "button_"+c
+                        var target_out = "<td id=\"button_X\" onclick=\"update_color('button_X')\"></td>"
+                        var target_out = target_out.replace(/X/g,c.toString(10))
+                        cell.outerHTML = target_out
+
+                        c++
+                    }
+                }
+            }
+
+            function add_col(){
+                var canvas = document.getElementById("canvas")
+                for(var i=0;i<canvas.rows.length;i++){
+                    var cell = canvas.rows[i].insertCell(-1)
+                    cell = canvas.rows[0].cells[0]
+                }
+                num_cols++
+                renumber_table()
+            };
+
+            function add_row(){
+                var canvas = document.getElementById("canvas");
+                var row = canvas.insertRow(-1);
+                for(var i=0;i<num_cols;i++){
+                    var cell = row.insertCell(-1);
+                    cell = canvas.rows[0].cells[0]
+                }
+                num_rows++
+                renumber_table()
+            }
+
+
+            function update_master_color(color){
+                //console.log("ayyye")
+                current_color = color;
+            };
+
+            function update_master_color_reg(loc){
+                var r = document.getElementById(loc)
+                current_color = r.value
+            }
+
+
+            function update_color(btn){
+                //console.log("ayyye")
+                var property = document.getElementById(btn);
+                property.style.backgroundColor = current_color
+
+                update_com_code()
+            };
+
+            function update_num_as_hex() {
+                var x = parseInt(document.getElementById("num_to_hex").value);
+                var hexX = x.toString(16);
+                hexX = "#"+hexX.padStart(6, '0')
+                document.getElementById("num_as_hex").innerHTML = hexX;
+                document.getElementById('num_as_hex').style.color = hexX
+            }
+
+            function update_color_in(loc){
+                current_color = document.getElementById('num_as_hex').innerHTML
+            }
+
+
+            function componentFromStr(numStr, percent) {
+                var num = Math.max(0, parseInt(numStr, 10));
+                return percent ?
+                    Math.floor(255 * Math.min(100, num) / 100) : Math.min(255, num);
+            }
+
+            function rgbToHex(rgb) {
+                var rgbRegex = /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/;
+                var result, r, g, b, hex = "";
+                if ( (result = rgbRegex.exec(rgb)) ) {
+                    r = componentFromStr(result[1], result[2]);
+                    g = componentFromStr(result[3], result[4]);
+                    b = componentFromStr(result[5], result[6]);
+
+                    hex = "0x" + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+                }
+                return hex;
+            }
+
+
+
+            function update_com_code(){
+                comp_code = "program = [<br>"
+                for(var i=0;i<canvas.rows.length;i++){
+                    for(var j=0;j<canvas.rows[i].cells.length;j++){
+                        var cell = canvas.rows[i].cells[j]
+                        var com = cell.style.backgroundColor
+                        if(com != "" && com !="rgb(255, 255, 255)"){
+                            var hex = rgbToHex(com)
+                            comp_code += "&nbsp;&nbsp;&nbsp;&nbsp;\""
+                            comp_code += hex.toLowerCase()
+                            comp_code += "\",<br>"
+                        }
+                        
+                    }
+                }
+                comp_code += "]<br><br>"
+                comp_code += "program_memory = {<br>"
+                var regsiters = document.getElementById("r_tab").rows[0].cells
+                for(var i=0;i<regsiters.length;i++){
+                    //console.log(regsiters[i].children[1].value)
+                    comp_code += "&nbsp;&nbsp;&nbsp;&nbsp;\""
+                    comp_code += regsiters[i].children[1].value.toLowerCase().replace("#","0x")
+                    comp_code += "\":[],<br>"
+                }
+                comp_code += "}"
+                document.getElementById("comp_code").innerHTML = comp_code
+            }
+
+            
+
+
+
+
+
+            function selectText(node) {
+                node = document.getElementById(node);
+
+                if (document.body.createTextRange) {
+                    const range = document.body.createTextRange();
+                    range.moveToElementText(node);
+                    range.select();
+                } else if (window.getSelection) {
+                    const selection = window.getSelection();
+                    const range = document.createRange();
+                    range.selectNodeContents(node);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                } else {
+                    console.warn("Could not select text in node: Unsupported browser.");
+                }
+            }
+            function copy_code() {
+                var copyText = document.getElementById("comp_code");
+                selectText("comp_code")
+                document.execCommand("copy");
+            }
+
+      </script>
+</body>
+
+
+
+
+
