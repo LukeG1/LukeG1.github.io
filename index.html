@@ -9,11 +9,18 @@
             width: 40px;
             height: 40px;
         }
-        input[type=button]{
+        .btn{
             width: 100;
             height: 100%;
             background-color: white;
             border: 0ch;
+        }
+
+        .full{
+            -webkit-appearance: none;
+            border: none;
+            width: 32px;
+            height: 32px;
         }
 
         input[type="color"] {
@@ -76,19 +83,6 @@
                 </tr>
             </table>
 
-            <h1>Regsiter Palette</h1>
-            <table id="r_tab">
-                <tr>
-                    <td onclick="update_master_color_reg('R1-name')">
-                        <h1>R1</h1>
-                        <input type="color" id='R1-name' value="#808080">
-                        <input type="color" id='R1-type' value="#ffffff">
-                        <input type="color" id='R1-value' value="#ffffff">
-
-                    </td>
-                </tr>
-            </table>
-            <button onclick="add_reg()">Add Regsiter</button>
             <div style="height: 50pt;"></div>
             <div>
                 <button onclick="add_col()">Add Column</button>
@@ -106,10 +100,26 @@
 
                 </tr>
             </table>
+            <!-- <h1>Regsiter Palette</h1> -->
+            <table id="r_tab">
+                <tr>
+                    <td onclick="update_master_color_reg('R1-name')">
+                        <input type="color" id='R1-name' value="#808080">
+                        <input type="button" id='R1-type' style="display: block;" onclick="update_color('R1-type')" class="full">
+                        <input type="button" id='R1-value' onclick="update_color('R1-value')" class="full">
+                        <h1>R1</h1>
+                    </td>
+                </tr>
+            </table>
+            <button onclick="add_reg()">Add Regsiter</button>
 
         </span>
         <div style="float: right;">
             <h1>Tools</h1>
+            <form method="get" action="esoteric_code_runner_alone.py">
+                <button type="submit">Click to download code runner</button>
+            </form>
+            <p>Replace the program and program_memory with your own</p>
             <h2>Enter an integer:</h2>
             <input type="number" id="num_to_hex" value="0" onchange="update_num_as_hex()">
             <h2 id='num_as_hex' onclick="update_color_in('num_as_hex')"></h2>
@@ -254,8 +264,17 @@
                 for(var i=0;i<regsiters.length;i++){
                     //console.log(regsiters[i].children[1].value)
                     comp_code += "&nbsp;&nbsp;&nbsp;&nbsp;\""
-                    comp_code += regsiters[i].children[1].value.toLowerCase().replace("#","0x")
-                    comp_code += "\":[],<br>"
+                    comp_code += regsiters[i].children[0].value.toLowerCase().replace("#","0x")
+                    comp_code += "\":["
+                    if(regsiters[i].children[1].style.backgroundColor.toLowerCase().replace("#","0x") != ""){
+                        comp_code += "\""+rgbToHex(regsiters[i].children[1].style.backgroundColor)+"\""
+                        comp_code += ","
+                    }
+                    if(regsiters[i].children[2].style.backgroundColor.toLowerCase().replace("#","0x") != ""){
+                        comp_code += "\""+rgbToHex(regsiters[i].children[2].style.backgroundColor)+"\""
+                        comp_code += ","
+                    }
+                    comp_code += "],<br>"
                 }
                 comp_code += "}"
                 document.getElementById("comp_code").innerHTML = comp_code
