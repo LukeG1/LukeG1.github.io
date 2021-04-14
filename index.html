@@ -5,7 +5,7 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-        td {
+        .click_td {
             width: 40px;
             height: 40px;
         }
@@ -42,62 +42,51 @@
     <span>
         <span style="float: left; border-right: 5px solid #000000;">
             <h1>Command Palette</h1>
+            <p>Click a command to select its color. Hover over a command to see how to use it</p>
             <table>
+                <tr><td>Miscellaneous</td></tr>
                 <tr>
-                    <td>var</td>
-                    <td>int</td>
-                    <td>str</td>
-                    <td>bool</td>
-                    <td>true</td>
-                    <td>fals</td>
-                    <td>ptyp</td>
-                    <td>praw</td>
-                    <td>add</td>
-                    <td>sub</td>
-                    <td>eq</td>
-                    <td>not</td>
-                    <td>if</td>
-                    <td>inc</td>
-                    <td>dec</td>
-                    <td>for</td>
-                    <td>clear</td>
+                    <td id="#d6cf0a" title="[var] [datatype] [value] [var]" style="background-color: #d6cf0a;" onclick="update_master_color('#d6cf0a')" class="click_td">var</td>
+                    <td id="#c6a3e6" title="[copy] [location] [destination]" style="background-color: #c6a3e6;" onclick="update_master_color('#c6a3e6')" class="click_td">copy</td>
+                    <td id="#1d7499" title="[for] [times to run (int)] [temporary var (int)] ...[what gets repeated]...  [for]" style="background-color: #1d7499;" onclick="update_master_color('#1d7499')" class="click_td">for</td>
+                    <td id="#ffb84b" title="[ptyp] [location]" style="background-color: #ffb84b;" onclick="update_master_color('#ffb84b')" class="click_td">ptyp</td>
+                    <td id="#9e8520" title="[praw] [location]" style="background-color: #9e8520;" onclick="update_master_color('#9e8520')" class="click_td">praw</td>
+                    <td id="#a66d7f" title="[inc] [location]" style="background-color: #a66d7f;" onclick="update_master_color('#a66d7f')" class="click_td">inc</td>
+                    <td id="#7a86ff" title="[dec] [location]" style="background-color: #7a86ff;" onclick="update_master_color('#7a86ff')" class="click_td">dec</td>
+                    <td id="#ffffff" title="" style="background-color: #ffffff;" onclick="update_master_color('#ffffff')" class="click_td">clear</td>
                 </tr>
+                <tr><td>Data Types</td></tr>
                 <tr>
-                    <td id=" #D6CF0A " style="background-color: #D6CF0A;" onclick="update_master_color('#D6CF0A')"></td>
-                    <td id=" #ff0000 " style="background-color: #ff0000;" onclick="update_master_color('#ff0000')"></td>
-                    <td id=" #ca00f2 " style="background-color: #ca00f2;" onclick="update_master_color('#ca00f2')"></td>
-                    <td id=" #ed6b1a " style="background-color: #ed6b1a;" onclick="update_master_color('#ed6b1a')"></td>
-                    <td id=" #32a852 " style="background-color: #32a852;" onclick="update_master_color('#32a852')"></td>
-                    <td id=" #d93daf " style="background-color: #d93daf;" onclick="update_master_color('#d93daf')"></td>
-                    <td id=" #FFB84B " style="background-color: #FFB84B;" onclick="update_master_color('#FFB84B')"></td>
-                    <td id=" #9e8520 " style="background-color: #9e8520;" onclick="update_master_color('#9e8520')"></td>
-                    <td id=" #9D3756 " style="background-color: #9D3756;" onclick="update_master_color('#9D3756')"></td>
-                    <td id=" #3243fc " style="background-color: #3243fc;" onclick="update_master_color('#3243fc')"></td>
-                    <td id=" #5ef290 " style="background-color: #5ef290;" onclick="update_master_color('#5ef290')"></td>
-                    <td id=" #6b1810 " style="background-color: #6b1810;" onclick="update_master_color('#6b1810')"></td>
-                    <td id=" #e063bd " style="background-color: #e063bd;" onclick="update_master_color('#e063bd')"></td>
-                    <td id=" #a66d7f " style="background-color: #a66d7f;" onclick="update_master_color('#a66d7f')"></td>
-                    <td id=" #7a86ff " style="background-color: #7a86ff;" onclick="update_master_color('#7a86ff')"></td>
-                    <td id=" #1d7499 " style="background-color: #1d7499;" onclick="update_master_color('#1d7499')"></td>
-                    <td id=" #ffffff " style="background-color: #ffffff;" onclick="update_master_color('#ffffff')"></td>
+                    <td id="#ff0000" title="decorator for other methods" style="background-color: #ff0000;" onclick="update_master_color('#ff0000')" class="click_td">int</td>
+                    <td id="#ca00f2" title="decorator for other methods" style="background-color: #ca00f2;" onclick="update_master_color('#ca00f2')" class="click_td">str</td>
+                    <td id="#ed6b1a" title="decorator for other methods" style="background-color: #ed6b1a;" onclick="update_master_color('#ed6b1a')" class="click_td">bool</td>
+                </tr>
+                <tr><td>Logic</td></tr>
+                <tr>
+                    <td id="#e063bd" title="[if] [location (bool)] ...[potiential code]... [if]" style="background-color: #e063bd;" onclick="update_master_color('#e063bd')" class="click_td">if</td>
+                    <td id="#32a852" title="[just a posible value]" style="background-color: #32a852;" onclick="update_master_color('#32a852')" class="click_td">true</td>
+                    <td id="#d93daf" title="[just a posible value]" style="background-color: #d93daf;" onclick="update_master_color('#d93daf')" class="click_td">fals</td>
+                    <td id="#6b1810" title="[not] [location] [destination]" style="background-color: #6b1810;" onclick="update_master_color('#6b1810')" class="click_td">not</td>
+                    <td id="#1fe061" title="[eq] [location] [thing 1] [thing 2]" style="background-color: #1fe061;" onclick="update_master_color('#1fe061')" class="click_td">eq</td>
+                    <td id="#db4716" title="[lt] [location] [thing 1] [thing 2]" style="background-color: #db4716;" onclick="update_master_color('#db4716')" class="click_td">lt</td>
+                    <td id="#7cebc4" title="[lt] [location] [thing 1] [thing 2]" style="background-color: #7cebc4;" onclick="update_master_color('#7cebc4')" class="click_td">gt</td>
+                </tr>
+                <tr><td>Math</td></tr>
+                <tr>
+                    <td id="#9d3756" title="[add] [location] [thing 1]...[thing n] [add]" style="background-color: #9d3756;" onclick="update_master_color('#9d3756')" class="click_td">add</td>
+                    <td id="#3243fc" title="[sub] [location] [thing 1]...[thing n] [sub]" style="background-color: #3243fc;" onclick="update_master_color('#3243fc')" class="click_td">sub</td>
+                    <td id="#3dc9fc" title="[mult] [location] [thing 1]...[thing n] [mult]" style="background-color: #3dc9fc;" onclick="update_master_color('#3dc9fc')" class="click_td">mult</td>
                 </tr>
             </table>
-
-            <div style="height: 50pt;"></div>
+            <h1>Canvas</h1>
             <div>
                 <button onclick="add_col()">Add Column</button>
                 <button onclick="add_row()">+Add Row</button>
             </div>
-            <h1>Canvas</h1>
+            
             <table id="canvas">
                 <tr>
-                    <td id="button_1"></td>
-                    <td id="button_2"></td>
-                    <td id="button_3"></td>
-                    <td id="button_4"></td>
-                    <td id="button_5"></td>
-                    <!-- onclick="update_color('button_5')" -->
-
+                    <td id="button_1" class="click_td"></td>
                 </tr>
             </table>
             <!-- <h1>Regsiter Palette</h1> -->
@@ -131,7 +120,7 @@
 
             var current_color = "#ffffff";
             var num_rows = 1;
-            var num_cols = 5;
+            var num_cols = 1;
             var num_registers = 1;
             var comp_code = "";
 
@@ -159,7 +148,7 @@
                     for(var j=0;j<canvas.rows[i].cells.length;j++){
                         var cell = canvas.rows[i].cells[j]
                         cell.id = "button_"+c
-                        var target_out = "<td id=\"button_X\" onclick=\"update_color('button_X')\"></td>"
+                        var target_out = "<td id=\"button_X\" onclick=\"update_color('button_X')\" class=\"click_td\"></td>"
                         var target_out = target_out.replace(/X/g,c.toString(10))
                         cell.outerHTML = target_out
 
@@ -308,6 +297,15 @@
                 selectText("comp_code")
                 document.execCommand("copy");
             }
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                for(var i=0;i<5;i++){
+                    add_row()
+                    add_col()
+                    add_reg()
+                }
+            }, false);
 
       </script>
 </body>
