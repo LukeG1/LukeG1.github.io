@@ -40,7 +40,39 @@
 </head>
 <body>
     <span>
-        <span style="float: left; border-right: 5px solid #000000;">
+        <span style="float: left; border-right: 5px solid #000000; border-bottom: 5px solid #000000; padding-right: 60px; height: 200vh;">
+            <h1>Canvas</h1>
+            <p>click a cell to set its color</p>
+            <div>
+                <button onclick="add_col()">Add Column</button>
+                <button onclick="add_row()">+Add Row</button>
+            </div>
+            
+            <table id="canvas">
+                <tr>
+                    <td id="button_1" class="click_td"></td>
+                </tr>
+            </table>
+            <!-- <h1>Regsiter Palette</h1> -->
+            <table id="r_tab">
+                <tr>
+                    <td onclick="update_master_color_reg('R1-name')" style="width: 40px; word-wrap: break-word; vertical-align: top;">
+                        <input type="color" id='R1-name' value="#808080">
+                        <input type="button" id='R1-type' style="display: block;" onclick="update_color('R1-type')" class="full">
+                        <input type="button" id='R1-value' onclick="update_color('R1-value')" class="full">
+                        <h1 style="word-wrap: break-word; width: 40px;">R1</h1>
+                    </td>
+                </tr>
+            </table>
+            <button onclick="add_reg()">Add Regsiter</button>
+            <p style="word-wrap: break-word;width:max-content">use the top cell to select a color for that register.<br>You can preset a value with the 2 buttons below<br>the same way you would on the canvas above</p>
+
+        </span >
+        <div>
+            <h1>Tools</h1>
+            <form method="get" action="esoteric_code_runner_alone.py">
+                <button type="submit">Click to download code runner</button>
+            </form>
             <h1>Command Palette</h1>
             <p>Click a command to select its color. Hover over a command to see how to use it</p>
             <table>
@@ -78,42 +110,12 @@
                     <td id="#3dc9fc" title="[mult] [location] [thing 1]...[thing n] [mult]" style="background-color: #3dc9fc;" onclick="update_master_color('#3dc9fc')" class="click_td">mult</td>
                 </tr>
             </table>
-            <h1>Canvas</h1>
-            <div>
-                <button onclick="add_col()">Add Column</button>
-                <button onclick="add_row()">+Add Row</button>
-            </div>
-            
-            <table id="canvas">
-                <tr>
-                    <td id="button_1" class="click_td"></td>
-                </tr>
-            </table>
-            <!-- <h1>Regsiter Palette</h1> -->
-            <table id="r_tab">
-                <tr>
-                    <td onclick="update_master_color_reg('R1-name')">
-                        <input type="color" id='R1-name' value="#808080">
-                        <input type="button" id='R1-type' style="display: block;" onclick="update_color('R1-type')" class="full">
-                        <input type="button" id='R1-value' onclick="update_color('R1-value')" class="full">
-                        <h1>R1</h1>
-                    </td>
-                </tr>
-            </table>
-            <button onclick="add_reg()">Add Regsiter</button>
-
-        </span>
-        <div style="float: right;">
-            <h1>Tools</h1>
-            <form method="get" action="esoteric_code_runner_alone.py">
-                <button type="submit">Click to download code runner</button>
-            </form>
             <p>Replace the program and program_memory with your own</p>
             <h2>Enter an integer:</h2>
             <input type="number" id="num_to_hex" value="0" onchange="update_num_as_hex()">
             <h2 id='num_as_hex' onclick="update_color_in('num_as_hex')"></h2>
             <h1>HERE IS THE COMPILED CODE<br>CLICK TO COPY</h1>
-            <p id="comp_code" onclick="copy_code()"></p>
+            <code id="comp_code" onclick="copy_code()"></code>
         </div>
       </span>
       <script>
@@ -309,8 +311,3 @@
 
       </script>
 </body>
-
-
-
-
-
