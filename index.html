@@ -230,17 +230,17 @@
             </table> -->
             <table id="r_tab2">
                 <tr>
-                    <td class="click_td"><input class="click_td reset-this" type="color" id='R1-name' value="#808080"></td>
+                    <td class="click_td"><input class="click_td reset-this" type="color" id='R_1-name' value="#808080"></td>
                 </tr>
                 <tr>
-                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R1-type' style="display: block; background-color: #ffffff;" onclick="update_color('R1-type')" class="full"></td>
+                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R_1-type' style="display: block; background-color: #ffffff;" onclick="update_color('R_1-type')" class="full"></td>
                 </tr>
                 <tr>
-                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R1-value' style="background-color: #ffffff;" onclick="update_color('R1-value')" class="full"></td>
+                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R_1-value' style="background-color: #ffffff;" onclick="update_color('R_1-value')" class="full"></td>
                 </tr>
                 <tr>
-                    <td onclick="update_master_color_reg('R1-name')" style="width: 40px; word-wrap: break-word; vertical-align: top;">
-                        <h1 style="word-wrap: break-word; width: 40px;">R1</h1>
+                    <td onclick="update_master_color_reg('R_1-name')" style="width: 40px; word-wrap: break-word; vertical-align: top;">
+                        <h1 style="word-wrap: break-word; width: 40px;">R_1</h1>
                     </td>
                 </tr>
             </table>
@@ -328,8 +328,8 @@
                     var row = new_regs.rows[i]
                     var cell = row.insertCell(-1)
                     var prev_cell = row.cells[0]
-                    cell.innerHTML = prev_cell.innerHTML.replace(/R1/g, "R"+num_registers.toString(10))
-                    cell.outerHTML = prev_cell.outerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                    cell.innerHTML = prev_cell.innerHTML.replace(/R_1/g, "R_"+num_registers.toString(10))
+                    cell.outerHTML = prev_cell.outerHTML.replace(/R_1/g, "R_"+num_registers.toString(10))
                 }
 
 
