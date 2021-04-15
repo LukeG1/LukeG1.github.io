@@ -16,6 +16,16 @@
             border: 0ch;
         }
 
+        .cleanbtn {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+
         .full{
             -webkit-appearance: none;
             border: none;
@@ -36,6 +46,160 @@
             border: none;
         }
 
+        .reset-this {
+        animation : none;
+        animation-delay : 0;
+        animation-direction : normal;
+        animation-duration : 0;
+        animation-fill-mode : none;
+        animation-iteration-count : 1;
+        animation-name : none;
+        animation-play-state : running;
+        animation-timing-function : ease;
+        backface-visibility : visible;
+        background : 0;
+        background-attachment : scroll;
+        background-clip : border-box;
+        background-color : transparent;
+        background-image : none;
+        background-origin : padding-box;
+        background-position : 0 0;
+        background-position-x : 0;
+        background-position-y : 0;
+        background-repeat : repeat;
+        background-size : auto auto;
+        border : 0;
+        border-style : none;
+        border-width : medium;
+        border-color : inherit;
+        border-bottom : 0;
+        border-bottom-color : inherit;
+        border-bottom-left-radius : 0;
+        border-bottom-right-radius : 0;
+        border-bottom-style : none;
+        border-bottom-width : medium;
+        border-collapse : separate;
+        border-image : none;
+        border-left : 0;
+        border-left-color : inherit;
+        border-left-style : none;
+        border-left-width : medium;
+        border-radius : 0;
+        border-right : 0;
+        border-right-color : inherit;
+        border-right-style : none;
+        border-right-width : medium;
+        border-spacing : 0;
+        border-top : 0;
+        border-top-color : inherit;
+        border-top-left-radius : 0;
+        border-top-right-radius : 0;
+        border-top-style : none;
+        border-top-width : medium;
+        bottom : auto;
+        box-shadow : none;
+        box-sizing : content-box;
+        caption-side : top;
+        clear : none;
+        clip : auto;
+        color : inherit;
+        columns : auto;
+        column-count : auto;
+        column-fill : balance;
+        column-gap : normal;
+        column-rule : medium none currentColor;
+        column-rule-color : currentColor;
+        column-rule-style : none;
+        column-rule-width : none;
+        column-span : 1;
+        column-width : auto;
+        content : normal;
+        counter-increment : none;
+        counter-reset : none;
+        cursor : auto;
+        direction : ltr;
+        display : inline;
+        empty-cells : show;
+        float : none;
+        font : normal;
+        font-family : inherit;
+        font-size : medium;
+        font-style : normal;
+        font-variant : normal;
+        font-weight : normal;
+        height : auto;
+        hyphens : none;
+        left : auto;
+        letter-spacing : normal;
+        line-height : normal;
+        list-style : none;
+        list-style-image : none;
+        list-style-position : outside;
+        list-style-type : disc;
+        margin : 0;
+        margin-bottom : 0;
+        margin-left : 0;
+        margin-right : 0;
+        margin-top : 0;
+        max-height : none;
+        max-width : none;
+        min-height : 0;
+        min-width : 0;
+        opacity : 1;
+        orphans : 0;
+        outline : 0;
+        outline-color : invert;
+        outline-style : none;
+        outline-width : medium;
+        overflow : visible;
+        overflow-x : visible;
+        overflow-y : visible;
+        padding : 0;
+        padding-bottom : 0;
+        padding-left : 0;
+        padding-right : 0;
+        padding-top : 0;
+        page-break-after : auto;
+        page-break-before : auto;
+        page-break-inside : auto;
+        perspective : none;
+        perspective-origin : 50% 50%;
+        position : static;
+        /* May need to alter quotes for different locales (e.g fr) */
+        quotes : '\201C' '\201D' '\2018' '\2019';
+        right : auto;
+        tab-size : 8;
+        table-layout : auto;
+        text-align : inherit;
+        text-align-last : auto;
+        text-decoration : none;
+        text-decoration-color : inherit;
+        text-decoration-line : none;
+        text-decoration-style : solid;
+        text-indent : 0;
+        text-shadow : none;
+        text-transform : none;
+        top : auto;
+        transform : none;
+        transform-style : flat;
+        transition : none;
+        transition-delay : 0s;
+        transition-duration : 0s;
+        transition-property : none;
+        transition-timing-function : ease;
+        unicode-bidi : normal;
+        vertical-align : baseline;
+        visibility : visible;
+        white-space : normal;
+        widows : 0;
+        width : auto;
+        word-spacing : normal;
+        z-index : auto;
+        /* basic modern patch */
+        all: initial;
+        all: unset;
+    }
+
     </style>
 </head>
 <body>
@@ -54,7 +218,7 @@
                 </tr>
             </table>
             <!-- <h1>Regsiter Palette</h1> -->
-            <table id="r_tab">
+            <!-- <table id="r_tab">
                 <tr>
                     <td onclick="update_master_color_reg('R1-name')" style="width: 40px; word-wrap: break-word; vertical-align: top;">
                         <input type="color" id='R1-name' value="#808080">
@@ -63,10 +227,30 @@
                         <h1 style="word-wrap: break-word; width: 40px;">R1</h1>
                     </td>
                 </tr>
+            </table> -->
+            <table id="r_tab2">
+                <tr>
+                    <td class="click_td"><input class="click_td reset-this" type="color" id='R1-name' value="#808080"></td>
+                </tr>
+                <tr>
+                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R1-type' style="display: block; background-color: #ffffff;" onclick="update_color('R1-type')" class="full"></td>
+                </tr>
+                <tr>
+                    <td class="click_td"><input class="click_td cleanbtn" type="button" id='R1-value' style="background-color: #ffffff;" onclick="update_color('R1-value')" class="full"></td>
+                </tr>
+                <tr>
+                    <td onclick="update_master_color_reg('R1-name')" style="width: 40px; word-wrap: break-word; vertical-align: top;">
+                        <h1 style="word-wrap: break-word; width: 40px;">R1</h1>
+                    </td>
+                </tr>
             </table>
             <button onclick="add_reg()">Add Regsiter</button>
             <p style="word-wrap: break-word;width:max-content">use the top cell to select a color for that register.<br>You can preset a value with the 2 buttons below<br>the same way you would on the canvas above</p>
+        
+        
 
+        
+        
         </span >
         <div>
             <h1>Tools</h1>
@@ -130,14 +314,24 @@
             function add_reg(){
                 num_registers++
 
-                var regsiter_table = document.getElementById("r_tab")
-                var row = regsiter_table.rows[0]
-                var cell = row.insertCell(-1)
-                var prev_cell = row.cells[0]
-                cell.innerHTML = prev_cell.innerHTML.replace(/R1/g, "R"+num_registers.toString(10))
-                cell.outerHTML = prev_cell.outerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                // var regsiter_table = document.getElementById("r_tab")
+                // var row = regsiter_table.rows[0]
+                // var cell = row.insertCell(-1)
+                // var prev_cell = row.cells[0]
+                // cell.innerHTML = prev_cell.innerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                // cell.outerHTML = prev_cell.outerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                
 
-                //new RegExp("[0-9]")/g
+
+                var new_regs = document.getElementById("r_tab2")
+                for(var i=0;i<new_regs.rows.length;i++){
+                    var row = new_regs.rows[i]
+                    var cell = row.insertCell(-1)
+                    var prev_cell = row.cells[0]
+                    cell.innerHTML = prev_cell.innerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                    cell.outerHTML = prev_cell.outerHTML.replace(/R1/g, "R"+num_registers.toString(10))
+                }
+
 
 
             }
@@ -146,11 +340,25 @@
             function renumber_table(){
                 var canvas = document.getElementById("canvas")
                 var c = 1
+
+
+                colors = []
+                for(var i=0;i<canvas.rows.length;i++){
+                    for(var j=0;j<canvas.rows[i].cells.length;j++){
+                        var cell = canvas.rows[i].cells[j]
+                        //console.log(cell.style.backgroundColor)
+                        colors.push(cell.style.backgroundColor)
+                    }
+                }
                 for(var i=0;i<canvas.rows.length;i++){
                     for(var j=0;j<canvas.rows[i].cells.length;j++){
                         var cell = canvas.rows[i].cells[j]
                         cell.id = "button_"+c
-                        var target_out = "<td id=\"button_X\" onclick=\"update_color('button_X')\" class=\"click_td\"></td>"
+                        var bColor = ""
+                        if(colors[c-1] != ""){
+                            bColor = "style=\"background-color: "+rgbToHex(colors[c-1]).replace("0x","#")+";\""
+                        }
+                        var target_out = "<td id=\"button_X\" onclick=\"update_color('button_X')\" "+bColor+" class=\"click_td\"></td>"
                         var target_out = target_out.replace(/X/g,c.toString(10))
                         cell.outerHTML = target_out
 
@@ -251,21 +459,29 @@
                 }
                 comp_code += "]<br><br>"
                 comp_code += "program_memory = {<br>"
-                var regsiters = document.getElementById("r_tab").rows[0].cells
-                for(var i=0;i<regsiters.length;i++){
-                    //console.log(regsiters[i].children[1].value)
+                var regsiters = document.getElementById("r_tab2")
+                for(var i=0;i<regsiters.rows[0].cells.length;i++){
+                    var cell = regsiters.rows[0].cells[i]
+                    
                     comp_code += "&nbsp;&nbsp;&nbsp;&nbsp;\""
-                    comp_code += regsiters[i].children[0].value.toLowerCase().replace("#","0x")
+                    comp_code +=  cell.firstChild.value.toLowerCase().replace("#","0x")
                     comp_code += "\":["
-                    if(regsiters[i].children[1].style.backgroundColor.toLowerCase().replace("#","0x") != ""){
-                        comp_code += "\""+rgbToHex(regsiters[i].children[1].style.backgroundColor)+"\""
-                        comp_code += ","
+
+                    var cell = regsiters.rows[1].cells[i]
+                    var value = ""
+                    if(rgbToHex(cell.firstChild.style.backgroundColor) != "0xffffff"){
+                        value = "\""+rgbToHex(cell.firstChild.style.backgroundColor)+"\","
                     }
-                    if(regsiters[i].children[2].style.backgroundColor.toLowerCase().replace("#","0x") != ""){
-                        comp_code += "\""+rgbToHex(regsiters[i].children[2].style.backgroundColor)+"\""
-                        comp_code += ","
+                    comp_code += value
+
+                    var cell = regsiters.rows[2].cells[i]
+                    var value = ""
+                    if(rgbToHex(cell.firstChild.style.backgroundColor) != "0xffffff"){
+                        value = "\""+rgbToHex(cell.firstChild.style.backgroundColor)+"\","
                     }
+                    comp_code += value
                     comp_code += "],<br>"
+
                 }
                 comp_code += "}"
                 document.getElementById("comp_code").innerHTML = comp_code
@@ -311,3 +527,8 @@
 
       </script>
 </body>
+
+
+
+
+
